@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V.V. Sreejish — Senior Data Architect</title>
+  <meta name="description" content="Senior Data Engineer & Cloud Solutions Architect with 11+ years designing enterprise-grade data platforms and AI-driven systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:    #f8f5f0;
+      --ivory-2:  #f0ece4;
+      --paper:    #ede9e0;
+      --slate:    #1c2333;
+      --slate-2:  #2d3650;
+      --ink:      #0d1320;
+      --gold:     #b8924a;
+      --gold-lt:  #d4aa6a;
+      --warm:     #8a7560;
+      --muted:    #7a7268;
+      --divider:  #ddd8cf;
+      --shadow:   rgba(28, 35, 51, 0.08);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--ivory);
+      color: var(--slate);
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Subtle paper texture */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--ivory-2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 5rem;
+      background: rgba(248, 245, 240, 0.93);
+      backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid var(--divider);
+      transition: padding 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      padding-top: 0.9rem; padding-bottom: 0.9rem;
+      box-shadow: 0 2px 32px var(--shadow);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.9rem; }
+    .nav-monogram {
+      width: 38px; height: 38px;
+      background: var(--ink); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--ink);
+    }
+    .nav-role {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-top: 1px;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s; font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 420px;
+      padding: 0 5rem; align-items: center; overflow: hidden;
+    }
+    .hero-left { padding-top: 5rem; position: relative; z-index: 1; }
+
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.9s 0.1s ease forwards;
+    }
+    .hero-kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.8rem, 6.5vw, 6.5rem);
+      font-weight: 600; line-height: 1.0;
+      letter-spacing: -0.01em; color: var(--ink);
+      opacity: 0; animation: fadeUp 0.9s 0.25s ease forwards;
+    }
+    .hero-headline em { font-style: italic; color: var(--gold); }
+
+    .hero-divider {
+      width: 56px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      margin: 2rem 0;
+      opacity: 0; animation: fadeUp 0.9s 0.4s ease forwards;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--muted);
+      max-width: 500px; line-height: 1.85;
+      opacity: 0; animation: fadeUp 0.9s 0.5s ease forwards;
+    }
+    .hero-desc strong { color: var(--slate); font-weight: 500; }
+
+    .hero-actions {
+      display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 0.65s ease forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer; transition: all 0.25s ease;
+    }
+    .btn-gold {
+      background: var(--ink); color: var(--gold); border: 1px solid var(--ink);
+    }
+    .btn-gold:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .btn-outline {
+      background: transparent; color: var(--slate); border: 1px solid var(--divider);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-right {
+      height: 100vh; display: flex; align-items: center;
+      justify-content: center; padding: 5rem 0 5rem 4rem;
+      opacity: 0; animation: fadeIn 1.2s 0.8s ease forwards;
+      position: relative; z-index: 1;
+    }
+    .cred-card {
+      background: var(--ink); color: white;
+      padding: 3rem 2.5rem; width: 100%; max-width: 360px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 24px 32px 80px rgba(13, 19, 32, 0.22);
+    }
+    .cred-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2.5rem; }
+    .cred-avatar {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--ink);
+    }
+    .cred-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
+    .cred-title { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-lt); margin-top: 0.25rem; }
+    .cred-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: rgba(255,255,255,0.06); margin-bottom: 2rem;
+    }
+    .cred-stat { background: rgba(255,255,255,0.03); padding: 1.2rem; text-align: center; }
+    .cred-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .cred-stat-label { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.3rem; }
+    .cred-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .badge { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; border: 1px solid rgba(184, 146, 74, 0.35); color: var(--gold-lt); }
+
+    /* SECTIONS */
+    .section { max-width: 1200px; margin: 0 auto; padding: 6rem 5rem; }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-eyebrow::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; color: var(--ink); letter-spacing: -0.01em; line-height: 1.15; }
+    .section-intro { margin-top: 1rem; max-width: 600px; font-size: 0.92rem; color: var(--muted); line-height: 1.85; }
+
+    /* EXPERTISE */
+    .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--divider); }
+    .expertise-col { padding: 2.5rem; border-right: 1px solid var(--divider); transition: background 0.3s; }
+    .expertise-col:last-child { border-right: none; }
+    .expertise-col:hover { background: var(--ivory-2); }
+    .exp-icon { width: 44px; height: 44px; margin-bottom: 1.5rem; background: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border-top: 2px solid var(--gold); }
+    .exp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+    .exp-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+    .exp-list { list-style: none; margin-top: 1.5rem; }
+    .exp-list li { font-size: 0.75rem; letter-spacing: 0.05em; padding: 0.45rem 0; border-bottom: 1px solid var(--divider); color: var(--warm); display: flex; align-items: center; gap: 0.5rem; }
+    .exp-list li::before { content: '→'; color: var(--gold); font-size: 0.7rem; }
+
+    /* INDUSTRIES */
+    .industries-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .industries-sidebar p { font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+    .industries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--divider); }
+    .industry-tile { background: var(--ivory-2); padding: 2rem 1.8rem; transition: background 0.25s; display: flex; flex-direction: column; gap: 0.4rem; }
+    .industry-tile:hover { background: var(--ivory); }
+    .industry-icon { font-size: 1.5rem; }
+    .industry-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+    .industry-sub { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    /* CAPABILITIES */
+    .cap-clusters { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; }
+    .cap-cluster-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(184, 146, 74, 0.25); }
+    .cap-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .cap-tag { font-size: 0.72rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); letter-spacing: 0.04em; transition: all 0.2s; }
+    .cap-tag:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    /* COLLABORATE */
+    .collab-list { display: flex; flex-direction: column; border: 1px solid var(--divider); }
+    .collab-row { display: grid; grid-template-columns: 80px 1fr auto; align-items: stretch; border-bottom: 1px solid var(--divider); transition: background 0.2s; cursor: default; }
+    .collab-row:last-child { border-bottom: none; }
+    .collab-row:hover { background: var(--ivory-2); }
+    .collab-num-cell { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--divider); font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--gold); padding: 1.8rem; }
+    .collab-body { padding: 1.8rem 2.5rem; }
+    .collab-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); }
+    .collab-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+    .collab-arrow { display: flex; align-items: center; padding: 1.8rem 2rem; color: var(--divider); font-size: 1.2rem; border-left: 1px solid var(--divider); transition: color 0.2s; }
+    .collab-row:hover .collab-arrow { color: var(--gold); }
+
+    /* BEYOND */
+    .beyond-strip { background: var(--paper); border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider); padding: 2.5rem 5rem; display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .beyond-label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .beyond-items { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .beyond-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--warm); padding: 0.5rem 1rem; border: 1px solid var(--divider); transition: border-color 0.2s, color 0.2s; }
+    .beyond-item:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* CTA */
+    .cta-banner { background: var(--ink); padding: 5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .cta-copy { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; color: white; line-height: 1.2; }
+    .cta-copy em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 0.6rem; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 8rem 3rem 4rem; }
+      .hero-right { display: none; }
+      nav { padding: 1rem 3rem; }
+      .section { padding: 5rem 3rem; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .expertise-col { border-right: none; border-bottom: 1px solid var(--divider); }
+      .industries-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cta-banner { grid-template-columns: 1fr; padding: 3.5rem; }
+      .beyond-strip { padding: 2rem 3rem; }
+      footer { padding: 2rem 3rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .section { padding: 4rem 1.5rem; }
+      .industries-grid { grid-template-columns: 1fr; }
+      .collab-row { grid-template-columns: 50px 1fr; }
+      .collab-arrow { display: none; }
+      .beyond-strip { padding: 2rem 1.5rem; gap: 1.5rem; }
+      .cta-banner { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; padding: 1.5rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-brand">
+      <div class="nav-monogram">VVS</div>
+      <div>
+        <div class="nav-name">V.V. Sreejish</div>
+        <div class="nav-role">Senior Data Architect</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#capabilities">Stack</a></li>
+      <li><a href="#collaborate">Collaborate</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-kicker">Senior Data Engineer &amp; Cloud Architect</div>
+      <h1 class="hero-headline">
+        Architecting<br/>
+        <em>Intelligent</em><br/>
+        Data Systems
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        11+ years designing and delivering <strong>enterprise-grade data platforms</strong>, cloud architectures, and AI-integrated pipelines that drive measurable business outcomes across industries.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.linkedin.com/in/sreejishvv" target="_blank" rel="noopener" class="btn btn-gold">View LinkedIn Profile →</a>
+        <a href="#expertise" class="btn btn-outline">Explore Expertise</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="cred-card">
+        <div class="cred-header">
+          <div class="cred-avatar">VVS</div>
+          <div>
+            <div class="cred-name">V.V. Sreejish</div>
+            <div class="cred-title">Senior Data Engineer<br/>Cloud Solutions Architect</div>
+          </div>
+        </div>
+        <div class="cred-stats">
+          <div class="cred-stat"><div class="cred-stat-num">11+</div><div class="cred-stat-label">Years</div></div>
+          <div class="cred-stat"><div class="cred-stat-num">3</div><div class="cred-stat-label">Clouds</div></div>
+          <div class="cred-stat"><div class="cred-stat-num">∞</div><div class="cred-stat-label">Pipelines</div></div>
+          <div class="cred-stat"><div class="cred-stat-num">AI</div><div class="cred-stat-label">Integrated</div></div>
+        </div>
+        <div class="cred-badges">
+          <span class="badge">Data Engineering</span>
+          <span class="badge">Cloud Architecture</span>
+          <span class="badge">AI / LLMs</span>
+          <span class="badge">Governance</span>
+          <span class="badge">Lakehouse</span>
+          <span class="badge">Streaming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" style="background: var(--ivory-2); padding: 6rem 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Core Expertise</div>
+        <h2 class="section-title">Where Strategy Meets Engineering</h2>
+        <p class="section-intro">From architectural blueprints to production deployments — delivering scalable, secure, and measurable data solutions at enterprise scale.</p>
+      </div>
+      <div class="expertise-grid reveal">
+        <div class="expertise-col">
+          <div class="exp-icon">⚡</div>
+          <div class="exp-title">Modern Data Platforms</div>
+          <p class="exp-desc">Building robust Lakehouse architectures, real-time streaming systems, and governed data products that scale with your business.</p>
+          <ul class="exp-list">
+            <li>Lakehouse &amp; Data Mesh Design</li>
+            <li>Real-Time Streaming Pipelines</li>
+            <li>Enterprise Data Governance</li>
+            <li>Performance Optimization</li>
+          </ul>
+        </div>
+        <div class="expertise-col">
+          <div class="exp-icon">🤖</div>
+          <div class="exp-title">AI-Integrated Data Products</div>
+          <p class="exp-desc">Embedding LLMs, intelligent agents, and ML workflows directly into data pipelines — turning raw data into autonomous, decision-ready systems.</p>
+          <ul class="exp-list">
+            <li>LLM &amp; Agent Integration</li>
+            <li>MLflow &amp; Model Lifecycle</li>
+            <li>Intelligent ETL / RAG Pipelines</li>
+            <li>Feature Stores &amp; ML Platform</li>
+          </ul>
+        </div>
+        <div class="expertise-col">
+          <div class="exp-icon">☁️</div>
+          <div class="exp-title">Cloud Solutions Architecture</div>
+          <p class="exp-desc">Designing multi-cloud and hybrid data environments with a focus on security, cost efficiency, and operational resilience.</p>
+          <ul class="exp-list">
+            <li>AWS / Azure / GCP Architecture</li>
+            <li>Databricks &amp; Snowflake</li>
+            <li>Cost Optimization Strategy</li>
+            <li>Security &amp; Compliance Frameworks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries" style="background: var(--ivory); padding: 6rem 0;">
+    <div class="section">
+      <div class="industries-layout">
+        <div class="reveal">
+          <div class="section-eyebrow">Industries</div>
+          <h2 class="section-title">Built for Professional &amp; Enterprise Contexts</h2>
+          <p style="margin-top: 1rem; font-size: 0.88rem; color: var(--muted); line-height: 1.9;">Data architecture decisions carry real consequences. I bring domain fluency alongside technical depth — understanding the regulatory, operational, and strategic pressures each industry faces.</p>
+          <p style="margin-top: 1rem; font-size: 0.88rem; color: var(--muted); line-height: 1.9;">Whether it's compliance-critical financial systems or analytics at scale for retail and healthcare, the engineering is always shaped by business context.</p>
+        </div>
+        <div class="industries-grid reveal reveal-delay-2">
+          <div class="industry-tile"><div class="industry-icon">🏦</div><div class="industry-name">Financial Services</div><div class="industry-sub">Risk, compliance &amp; analytics platforms</div></div>
+          <div class="industry-tile"><div class="industry-icon">🏥</div><div class="industry-name">Healthcare &amp; Life Sciences</div><div class="industry-sub">HIPAA-compliant data systems</div></div>
+          <div class="industry-tile"><div class="industry-icon">🛍️</div><div class="industry-name">Retail &amp; E-Commerce</div><div class="industry-sub">Customer analytics &amp; personalization</div></div>
+          <div class="industry-tile"><div class="industry-icon">⚙️</div><div class="industry-name">Manufacturing &amp; Supply Chain</div><div class="industry-sub">IoT data &amp; operational intelligence</div></div>
+          <div class="industry-tile"><div class="industry-icon">📡</div><div class="industry-name">Telecom &amp; Media</div><div class="industry-sub">High-throughput streaming systems</div></div>
+          <div class="industry-tile"><div class="industry-icon">🌐</div><div class="industry-name">SaaS &amp; Technology</div><div class="industry-sub">Product analytics &amp; data infrastructure</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities" style="background: var(--ink); padding: 6rem 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Technical Stack</div>
+        <h2 class="section-title" style="color:white;">Full-Spectrum Engineering Capabilities</h2>
+        <p class="section-intro" style="color: rgba(255,255,255,0.4);">A curated, production-tested technology portfolio across the modern data and AI landscape.</p>
+      </div>
+      <div class="cap-clusters reveal">
+        <div>
+          <div class="cap-cluster-title">Processing &amp; Compute</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Apache Spark</span><span class="cap-tag">Databricks</span><span class="cap-tag">Apache Flink</span><span class="cap-tag">Kafka</span><span class="cap-tag">dbt</span><span class="cap-tag">Airflow</span>
+          </div>
+        </div>
+        <div>
+          <div class="cap-cluster-title">Storage &amp; Formats</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Delta Lake</span><span class="cap-tag">Apache Iceberg</span><span class="cap-tag">Snowflake</span><span class="cap-tag">BigQuery</span><span class="cap-tag">Redshift</span><span class="cap-tag">Parquet</span>
+          </div>
+        </div>
+        <div>
+          <div class="cap-cluster-title">Cloud Platforms</div>
+          <div class="cap-tags">
+            <span class="cap-tag">AWS</span><span class="cap-tag">Azure</span><span class="cap-tag">GCP</span><span class="cap-tag">Kubernetes</span><span class="cap-tag">Terraform</span><span class="cap-tag">Docker</span>
+          </div>
+        </div>
+        <div>
+          <div class="cap-cluster-title">AI / ML</div>
+          <div class="cap-tags">
+            <span class="cap-tag">LLMs</span><span class="cap-tag">LangChain</span><span class="cap-tag">MLflow</span><span class="cap-tag">RAG</span><span class="cap-tag">AI Agents</span><span class="cap-tag">Feature Store</span>
+          </div>
+        </div>
+        <div>
+          <div class="cap-cluster-title">Governance &amp; Security</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Unity Catalog</span><span class="cap-tag">Apache Atlas</span><span class="cap-tag">Purview</span><span class="cap-tag">Data Lineage</span><span class="cap-tag">RBAC</span>
+          </div>
+        </div>
+        <div>
+          <div class="cap-cluster-title">Languages</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Python</span><span class="cap-tag">SQL</span><span class="cap-tag">Scala</span><span class="cap-tag">PySpark</span><span class="cap-tag">Bash</span><span class="cap-tag">YAML</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLABORATE -->
+  <section id="collaborate" style="background: var(--ivory); padding: 6rem 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Collaboration</div>
+        <h2 class="section-title">How We Can Work Together</h2>
+        <p class="section-intro">Open to advisory engagements, architecture consulting, delivery partnerships, and meaningful open-source collaboration.</p>
+      </div>
+      <div class="collab-list reveal">
+        <div class="collab-row">
+          <div class="collab-num-cell">01</div>
+          <div class="collab-body">
+            <div class="collab-title">Enterprise Data Platform Advisory</div>
+            <p class="collab-desc">Architecture reviews, technology selection, roadmap planning, and hands-on guidance for building or modernizing data platforms at scale.</p>
+          </div>
+          <div class="collab-arrow">→</div>
+        </div>
+        <div class="collab-row">
+          <div class="collab-num-cell">02</div>
+          <div class="collab-body">
+            <div class="collab-title">AI &amp; Data Product Engineering</div>
+            <p class="collab-desc">Designing and delivering AI-integrated data products — from intelligent pipelines to LLM-powered analytics — that create real decision leverage.</p>
+          </div>
+          <div class="collab-arrow">→</div>
+        </div>
+        <div class="collab-row">
+          <div class="collab-num-cell">03</div>
+          <div class="collab-body">
+            <div class="collab-title">Cloud Migration &amp; Modernization</div>
+            <p class="collab-desc">End-to-end cloud migration strategy and execution — lifting legacy systems into scalable, governed, cloud-native architectures.</p>
+          </div>
+          <div class="collab-arrow">→</div>
+        </div>
+        <div class="collab-row">
+          <div class="collab-num-cell">04</div>
+          <div class="collab-body">
+            <div class="collab-title">Open-Source Contribution</div>
+            <p class="collab-desc">Advancing the modern data and AI ecosystem through contributions to community-driven tools, frameworks, and shared standards.</p>
+          </div>
+          <div class="collab-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND -->
+  <div class="beyond-strip">
+    <span class="beyond-label">Beyond Work</span>
+    <div class="beyond-items">
+      <div class="beyond-item">📸 <span>Photography</span></div>
+      <div class="beyond-item">⛰️ <span>Trekking</span></div>
+      <div class="beyond-item">🤖 <span>AI Research</span></div>
+      <div class="beyond-item">🌍 <span>Open Source</span></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section id="connect" class="cta-banner">
+    <div>
+      <div class="cta-copy">Ready to build something<br/><em>extraordinary</em> together?</div>
+      <p class="cta-sub">Available for consulting engagements, advisory roles, and select full-time opportunities.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0.8rem; flex-shrink:0;">
+      <a href="https://www.linkedin.com/in/sreejishvv" target="_blank" rel="noopener" class="btn btn-gold">Connect on LinkedIn →</a>
+      <a href="https://github.com/Sreejish10" target="_blank" rel="noopener" class="btn btn-outline" style="border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4);">GitHub Profile →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">V.V. Sreejish — Senior Data Architect</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/sreejishvv" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Sreejish10" target="_blank" rel="noopener">GitHub</a>
+      <a href="#nav">Back to Top</a>
+    </div>
+  </footer>
+
+  <script>
+    // Compact nav on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
